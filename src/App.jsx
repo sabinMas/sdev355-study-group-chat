@@ -12,6 +12,8 @@ function now(){
 export default function App() {
   const [activeId, setActiveId] = useState("general");
   const [messages, setMessages] = useState(SEED_MESSAGES);
+  const [isTyping, setIsTyping] = useState(false);
+
   const channel = CHANNELS.find((c) => c.id === activeId);
 
   function handleSend(text) {
