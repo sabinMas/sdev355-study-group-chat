@@ -36,6 +36,8 @@ export default function Composer() {
         value={draft}
         onChange={(e) => setDraft(e.target.value)}
         onKeyDown={handleKeyDown}
+        // onFocus={() => onTypingChange(true)}
+        // onBlur={() => onTypingChange(false)}
       />
       <button type="submit">Send</button>
     </form>
