@@ -21,16 +21,21 @@ export default function App() {
     setMessages({ ...messages, [activeId]: [...messages[activeId], message] });
   }
 
-
+  function handleReact(id) {
+    const updated = messages[activeId].map((m) =>
+      m.id === id ? { ...m, hearts: m.hearts + 1 } : m
+    );
+    setMessages({ ...messages, [activeId]: updated });
+  }
 
 
   return (
     <div className="app">
       <Sidebar channels={CHANNELS} activeId={activeId} onSelectChannel={setActiveId} />
       <main className="main">
-        <ChatHeader channel={channel} />
-        <MessageList messages={messages[activeId]}/>
-        <Composer onSend={handleSend} />
+        <ChatHeader channel={channel} isTyping={isTyping} />
+        <MessageList messages={messages[activeId]} onReact={handleReact}/>
+        <Composer onSend={handleSend} onTypingChange={setIsTyping}/>
       </main>
     </div>
   );
